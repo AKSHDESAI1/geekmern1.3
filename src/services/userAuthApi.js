@@ -18,7 +18,7 @@ export const userAuthApi = createApi({
                 }
             },
         }),
-        
+
         loginUser: builder.mutation({
             query: (user) => {
                 return {
@@ -44,7 +44,7 @@ export const userAuthApi = createApi({
                 }
             },
         }),
-        
+
         sendPasswordResetEmail: builder.mutation({
             query: (user) => {
                 return {
@@ -60,4 +60,4 @@ export const userAuthApi = createApi({
     }),
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useLoggedUserQuery, useSendPasswordResetEmailMutation } = userAuthApi
+export const { useRegisterUserMutation, useLoginUserMutation, useLoggedUserQuery, useSendPasswordResetEmailMutation } = userAuthApi;

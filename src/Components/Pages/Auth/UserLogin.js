@@ -53,9 +53,9 @@ const UserLogin = () => {
         return setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
-  
+
       }
-     
+
     }
     else {
       setError({
@@ -75,7 +75,7 @@ const UserLogin = () => {
         <TextField margin="normal" required fullWidth type="password" id='password' name='password' label="Password" />
 
         <Box textAlign="center">
-          {responseInfo.isLoading ? (<> <Button type='submit' disabled variant='contained' sx={{ mt: 3, px: 5 }}> Login </Button> <LinearProgress sx={{mt: 3}} /></>) : (<> <Button type='submit' variant='contained' sx={{ mt: 3, px: 5 }}> Login </Button></>)}
+          {responseInfo.isLoading ? (<> <Button type='submit' disabled variant='contained' sx={{ mt: 3, px: 5 }}> Login </Button> <LinearProgress sx={{ mt: 3 }} /></>) : (<> <Button type='submit' variant='contained' sx={{ mt: 3, px: 5 }}> Login </Button></>)}
 
         </Box>
         <NavLink to="/sendpasswordresetemail"> Forgot Password </NavLink>

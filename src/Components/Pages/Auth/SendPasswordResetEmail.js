@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 const SendPasswordResetEmail = (props) => {
 
     const [SendPasswordResetEmail, responseInfo] = useSendPasswordResetEmailMutation();
-
+    console.log(responseInfo);
     const [error, setError] = useState({
         status: false,
         type: "",
@@ -24,11 +24,6 @@ const SendPasswordResetEmail = (props) => {
         if (actualData.email) {
             const res = await SendPasswordResetEmail(actualData);
             console.log('res', res);
-            // setError({
-            //     status: true,
-            //     type: "success",
-            //     msg: "Email Sent Successfully. Check your Mail !!"
-            // });
             document.getElementById("sent-email").reset();
         }
         else {
@@ -58,10 +53,13 @@ const SendPasswordResetEmail = (props) => {
                         <Button type='submit' variant='contained'> Send </Button>
                     </Box>
 
-                    {responseInfo.error ? (<> Error </>) : (responseInfo.isLoading ? (<>{<CircularProgress />}</>) : (responseInfo.data ? (responseInfo.data.status === "success" ? (<>
-                        {<Alert severity='success'> Email Sent Successfully </Alert>}</>) : (<><Alert severity='error'> {responseInfo.data.message} </Alert></>)) : (<></>)))}
+                    <Box mt={2}>
 
-                    {error.status && <Alert severity={error.type}> {error.msg} </Alert>}
+                        {responseInfo.status !== "uninitialized" ? (responseInfo.error ? (<> Error </>) : (responseInfo.isLoading ? (<>{<CircularProgress />}</>) : (responseInfo.status === "fulfilled" ? (responseInfo.data.status === "success" ? (<>
+                            {<Alert severity='success'> Email Sent Successfully </Alert>}</>) : (<> <Alert severity='error'> {responseInfo.data.message} </Alert></>)) : (<>{responseInfo.data.message}</>)))) : ("")}
+
+                        {error.status && <Alert severity={error.type}> {error.msg} </Alert>}
+                    </Box>
                 </Box>
 
                 <Box sx={{ mt: 2, textAlign: "center" }}>
