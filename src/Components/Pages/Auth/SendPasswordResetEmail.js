@@ -55,7 +55,7 @@ const SendPasswordResetEmail = (props) => {
 
                     <Box mt={2}>
 
-                        {responseInfo.status !== "uninitialized" ? (responseInfo.error ? (<> Error </>) : (responseInfo.isLoading ? (<>{<CircularProgress />}</>) : (responseInfo.status === "fulfilled" ? (responseInfo.data.status === "success" ? (<>
+                        {responseInfo.status !== "uninitialized" ? (responseInfo.error ? (<> Something went wrong OR Make Sure Your Intenet Activity Connection is On  </>) : (responseInfo.isLoading ? (<>{<CircularProgress />}</>) : (responseInfo.status === "fulfilled" ? (responseInfo.data.status === "success" ? (<>
                             {<Alert severity='success'> Email Sent Successfully </Alert>}</>) : (<> <Alert severity='error'> {responseInfo.data.message} </Alert></>)) : (<>{responseInfo.data.message}</>)))) : ("")}
 
                         {error.status && <Alert severity={error.type}> {error.msg} </Alert>}
